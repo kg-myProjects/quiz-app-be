@@ -27,9 +27,9 @@ This is the backend of the Mini-Quiz application built with Spring Boot, Hiberna
    ```
 6. Seed initial categories and questions
 7. Log SQL queries to console
-```yaml
-spring.jpa.show-sql: true
-```
+   ```yaml
+   spring.jpa.show-sql: true
+   ```
 
 **Note: create-drop means that each time you restart the backend,
 old tables are dropped and new ones are created. 
