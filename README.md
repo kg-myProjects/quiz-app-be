@@ -11,10 +11,10 @@ Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
    docker-compose up -d
    ```
 2. This will start a MariaDB container with the following settings:
-   Database: quizdb;
-   Username: root;
-   Password: password;
-   Port: 3306;
+   - Database: quizdb;
+   - Username: root;
+   - Password: password;
+   - Port: 3306;
 3. The backend will connect to this database automatically using the application.yml configuration.
 4. Start the backend.
    You can run the backend in your IDE (Spring Boot application) or via Gradle:
