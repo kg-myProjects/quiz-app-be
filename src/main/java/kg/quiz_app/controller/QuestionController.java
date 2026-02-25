@@ -2,8 +2,8 @@ package kg.quiz_app.controller;
 
 import kg.quiz_app.dto.QuestionDto;
 import kg.quiz_app.model.quiz.User;
-import kg.quiz_app.repository.UserRepository;
 import kg.quiz_app.service.question.QuestionService;
+import kg.quiz_app.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,15 +19,14 @@ import static kg.quiz_app.config.DataInitializer.TEST_USER_NAME;
 public class QuestionController {
 
     private final QuestionService questionService;
-    private final UserRepository userRepo;
+    private final UserService userService;
 
     @GetMapping("/api/categories/{id}/next-question")
     public QuestionDto getNextQuestion(
             @PathVariable("id") UUID categoryId,
             @RequestParam(value = "currentQuestionId", required = false) UUID currentQuestionId) {
 
-        User user = userRepo.findByName(TEST_USER_NAME)
-                .orElseThrow(() -> new RuntimeException("This user not found!"));
+        User user = userService.getUserByName(TEST_USER_NAME);
 
         return questionService.getNextQuestion(user.getId(), categoryId, currentQuestionId);
     }
