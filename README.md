@@ -14,19 +14,19 @@ This is the backend of the Mini-Quiz application built with Spring Boot, Hiberna
    Password: password
    Port: 3306
 3. The backend will connect to this database automatically using the application.yml configuration.
-4. Start the backend
+4. Start the backend.
    You can run the backend in your IDE (Spring Boot application) or via Gradle:
     ```bash
     ./gradlew bootRun
    ```
 5. The backend will:
-   Connect to MariaDB
-   Automatically create tables
+   Connect to MariaDB;
+   Automatically create tables:
     ```yaml
     spring.jpa.hibernate.ddl-auto: create-drop
    ```
-6. Seed initial categories and questions
-7. Log SQL queries to console
+6. Seed initial categories and questions.
+7. Log SQL queries to console:
    ```yaml
    spring.jpa.show-sql: true
    ```
@@ -39,6 +39,6 @@ Seed data is re-inserted automatically.**
 
 1. Default test user and seed-data are available (hardcode)
 2. API endpoints:
-   GET /api/categories – list all categories with progress
-   GET /api/categories/{id}/next-question – get next question in category
-   POST /api/questions/{id}/answer – submit answer and get correctness
+   GET /api/categories – list all categories with progress.
+   GET /api/categories/{id}/next-question – get next question in category.
+   POST /api/questions/{id}/answer – submit answer and get correctness.
