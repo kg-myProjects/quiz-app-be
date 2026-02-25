@@ -1,5 +1,6 @@
 # Quiz App Backend:
 This is the backend of the Mini-Quiz application built with Spring Boot, Hibernate, and MariaDB.
+
 Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
 
 ## Setup & Run:
@@ -40,6 +41,6 @@ Seed data is re-inserted automatically.**
 
 1. Default test user and seed-data are available (hardcode)
 2. API endpoints:
-    1. GET /api/categories – list all categories with progress.
-    2. GET /api/categories/{id}/next-question – get next question in category.
-    3. POST /api/questions/{id}/answer – submit answer and get correctness.
+   1. GET /api/categories – list all categories with progress.
+   2. GET /api/categories/{id}/next-question – get next question in category.
+   3. POST /api/questions/{id}/answer – submit answer and get correctness.
