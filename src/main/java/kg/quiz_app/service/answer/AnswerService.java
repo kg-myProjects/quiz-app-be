@@ -4,5 +4,5 @@ import java.util.UUID;
 
 public interface AnswerService {
 
-    boolean submitAnswer(UUID userId, UUID questionId, int selectedAnswer);
+    boolean submitAnswer(UUID questionId, int selectedAnswer);
 }

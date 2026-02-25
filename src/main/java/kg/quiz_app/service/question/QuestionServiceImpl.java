@@ -5,6 +5,7 @@ import kg.quiz_app.model.quiz.Category;
 import kg.quiz_app.model.quiz.Question;
 import kg.quiz_app.repository.AnswerRepository;
 import kg.quiz_app.repository.CategoryRepository;
+import kg.quiz_app.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,18 +15,23 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import static kg.quiz_app.config.DataInitializer.TEST_USER_NAME;
+
 @Service
 @RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
 
     private final CategoryRepository categoryRepo;
     private final AnswerRepository answerRepo;
+    private final UserService userService;
 
     @Override
-    public QuestionDto getNextQuestion(UUID userId, UUID categoryId, UUID currentQuestionId) {
+    public QuestionDto getNextQuestion(UUID categoryId, UUID currentQuestionId) {
 
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "This category not found!"));
+
+        UUID userId = userService.getUserByName(TEST_USER_NAME).getId();
 
         List<UUID> correctlyAnsweredIds = answerRepo
                 .findByUserIdAndQuestionCategoryIdAndIsCorrectTrue(userId, categoryId)

@@ -5,7 +5,7 @@ import kg.quiz_app.model.quiz.Question;
 import kg.quiz_app.model.quiz.User;
 import kg.quiz_app.repository.AnswerRepository;
 import kg.quiz_app.repository.QuestionRepository;
-import kg.quiz_app.repository.UserRepository;
+import kg.quiz_app.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -13,19 +13,20 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
+import static kg.quiz_app.config.DataInitializer.TEST_USER_NAME;
+
 @Service
 @RequiredArgsConstructor
 public class AnswerServiceImpl implements AnswerService {
 
     private final AnswerRepository answerRepo;
-    private final UserRepository userRepo;
     private final QuestionRepository questionRepo;
+    private final UserService userService;
 
     @Override
-    public boolean submitAnswer(UUID userId, UUID questionId, int selectedAnswerIndex) {
+    public boolean submitAnswer(UUID questionId, int selectedAnswerIndex) {
 
-        User user = userRepo.findById(userId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "This user not found!"));
+        User user = userService.getUserByName(TEST_USER_NAME);
 
         Question question = questionRepo.findById((questionId))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "This question not found!"));
@@ -33,7 +34,6 @@ public class AnswerServiceImpl implements AnswerService {
         boolean isCorrect = question.getCorrectIndex() == selectedAnswerIndex;
 
         Answer answer = new Answer(user, question, isCorrect);
-
         answerRepo.save(answer);
 
         return isCorrect;

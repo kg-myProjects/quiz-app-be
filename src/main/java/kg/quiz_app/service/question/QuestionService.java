@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface QuestionService {
 
-    QuestionDto getNextQuestion(UUID userId, UUID categoryId, UUID currentQuestionId);
+    QuestionDto getNextQuestion(UUID categoryId, UUID currentQuestionId);
 }
