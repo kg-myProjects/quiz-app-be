@@ -1,0 +1,9 @@
+package kg.quiz_app.repository;
+
+import kg.quiz_app.model.quiz.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface CategoryRepository extends JpaRepository<Category, UUID> {
+}

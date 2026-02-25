@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:11
+    container_name: quizdb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: quizdb
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
