@@ -41,6 +41,6 @@ Seed data is re-inserted automatically.**
 
 1. Default test user and seed-data are available (hardcode)
 2. API endpoints:
-   1. GET /api/categories – list all categories with progress.
-   2. GET /api/categories/{id}/next-question – get next question in category.
-   3. POST /api/questions/{id}/answer – submit answer and get correctness.
+   - GET /api/categories – list all categories with progress.
+   - GET /api/categories/{id}/next-question – get next question in category.
+   - POST /api/questions/{id}/answer – submit answer and get correctness.
