@@ -1,7 +1,8 @@
-# Quiz App Backend
+# Quiz App Backend:
 This is the backend of the Mini-Quiz application built with Spring Boot, Hibernate, and MariaDB.
+Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
 
-## Setup & Run
+## Setup & Run:
 1. **Start MariaDB via Docker Compose**
    In the root of the project (where `docker-compose.yml` is located), run:
 
@@ -9,10 +10,10 @@ This is the backend of the Mini-Quiz application built with Spring Boot, Hiberna
    docker-compose up -d
    ```
 2. This will start a MariaDB container with the following settings:
-   Database: quizdb
-   Username: root
-   Password: password
-   Port: 3306
+   Database: quizdb;
+   Username: root;
+   Password: password;
+   Port: 3306;
 3. The backend will connect to this database automatically using the application.yml configuration.
 4. Start the backend.
    You can run the backend in your IDE (Spring Boot application) or via Gradle:
@@ -35,10 +36,10 @@ This is the backend of the Mini-Quiz application built with Spring Boot, Hiberna
 old tables are dropped and new ones are created. 
 Seed data is re-inserted automatically.**
 
-## Test the backend
+## Test the backend:
 
 1. Default test user and seed-data are available (hardcode)
 2. API endpoints:
-   GET /api/categories – list all categories with progress.
-   GET /api/categories/{id}/next-question – get next question in category.
-   POST /api/questions/{id}/answer – submit answer and get correctness.
+    1. GET /api/categories – list all categories with progress.
+    2. GET /api/categories/{id}/next-question – get next question in category.
+    3. POST /api/questions/{id}/answer – submit answer and get correctness.
