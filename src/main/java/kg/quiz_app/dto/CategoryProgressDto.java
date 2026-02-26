@@ -10,6 +10,6 @@ import java.util.UUID;
 public class CategoryProgressDto {
     private UUID id;
     private String title;
-    private int totalQuestions;
+    private Long totalQuestions;
     private Long correctAnswers;
 }

@@ -25,6 +25,8 @@ public class QuestionServiceImpl implements QuestionService {
     private final AnswerRepository answerRepo;
     private final UserService userService;
 
+    private final Random random = new Random();
+
     @Override
     public QuestionDto getNextQuestion(UUID categoryId, UUID currentQuestionId) {
 
@@ -43,6 +45,11 @@ public class QuestionServiceImpl implements QuestionService {
                 .filter(q -> !correctlyAnsweredIds.contains(q.getId()))
                 .toList();
 
+        if (notAnswered.size() == 1) {
+            Question only = notAnswered.get(0);
+            return new QuestionDto(only.getId(), only.getText(), only.getOptions());
+        }
+
         if (currentQuestionId != null) {
             notAnswered = notAnswered.stream()
                     .filter(q -> !q.getId().equals(currentQuestionId))
@@ -53,8 +60,7 @@ public class QuestionServiceImpl implements QuestionService {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "All questions have been answered correctly");
         }
 
-        Question next;
-        next = notAnswered.get(new Random().nextInt(notAnswered.size()));
+        Question next = notAnswered.get(random.nextInt(notAnswered.size()));
 
         return new QuestionDto(next.getId(), next.getText(), next.getOptions());
     }
