@@ -1,5 +1,6 @@
 package kg.quiz_app.service.answer;
 
+import jakarta.transaction.Transactional;
 import kg.quiz_app.model.quiz.Answer;
 import kg.quiz_app.model.quiz.Question;
 import kg.quiz_app.model.quiz.User;
@@ -23,13 +24,18 @@ public class AnswerServiceImpl implements AnswerService {
     private final QuestionRepository questionRepo;
     private final UserService userService;
 
+    @Transactional
     @Override
     public boolean submitAnswer(UUID questionId, int selectedAnswerIndex) {
 
         User user = userService.getUserByName(TEST_USER_NAME);
 
-        Question question = questionRepo.findById((questionId))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "This question not found!"));
+        Question question = questionRepo.findById(questionId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Question not found!"));
+
+        if (selectedAnswerIndex < 0 || selectedAnswerIndex >= question.getOptions().size()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid answer index");
+        }
 
         boolean isCorrect = question.getCorrectIndex() == selectedAnswerIndex;
 
