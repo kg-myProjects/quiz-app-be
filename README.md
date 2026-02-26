@@ -22,8 +22,8 @@ Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
     ./gradlew bootRun
    ```
 5. The backend will:
-   Connect to MariaDB;
-   Automatically create tables:
+   - Connect to MariaDB;
+   - Automatically create tables:
     ```yaml
     spring.jpa.hibernate.ddl-auto: create-drop
    ```
