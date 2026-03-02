@@ -1,10 +1,10 @@
 # Quiz App Backend:
 This is the backend of the Mini-Quiz application built with Spring Boot, Hibernate, and MariaDB.
 
-Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
+Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe).
 
 ## Setup & Run:
-1. **Start MariaDB via Docker Compose**
+1. **Start MariaDB via Docker Compose.**
    In the root of the project (where `docker-compose.yml` is located), run:
 
    ```bash
@@ -27,8 +27,8 @@ Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe)
     ```yaml
     spring.jpa.hibernate.ddl-auto: create-drop
    ```
-6. Seed initial categories and questions.
-7. Log SQL queries to console:
+   - Seed initial categories and questions.
+   - Log SQL queries to console:
    ```yaml
    spring.jpa.show-sql: true
    ```
