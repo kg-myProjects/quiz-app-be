@@ -1,4 +1,4 @@
-# Quiz App Backend:
+# Quiz App Backend
 This is the backend of the Mini-Quiz application built with Spring Boot, Hibernate, and MariaDB.
 
 Frontend: [Quiz App Frontend](https://github.com/kg-myProjects/quiz-app-fe).
